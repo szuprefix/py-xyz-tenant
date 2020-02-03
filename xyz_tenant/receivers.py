@@ -13,4 +13,6 @@ def create_tenant_master(sender, **kwargs):
         u = User(username='admin', first_name='管理员')
         u.set_password(tenant.schema_name)
         u.save()
-        print u
+        from xyz_system.models import System, Master
+        System.objects.create(name="%sSaaS系统" % tenant.name)
+        Master.objects.create(user=u)
