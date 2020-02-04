@@ -25,7 +25,7 @@ class App(models.Model):
     name = models.CharField("名字", max_length=64, db_index=True, choices=choices.CHOICES_APPS)
     status = models.PositiveSmallIntegerField("状态", choices=choices.CHOICES_APP_STATUS,
                                               default=choices.APP_STATUS_INSTALL)
-    settings = modelutils.JSONField('配置')
+    settings = modelutils.JSONField('配置', default={})
     create_time = models.DateTimeField("创建时间", auto_now_add=True)
     modify_time = models.DateTimeField("修改时间", auto_now=True)
 
